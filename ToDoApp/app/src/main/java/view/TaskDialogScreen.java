@@ -208,26 +208,30 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private void jLabelToolBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarSaveMouseClicked
         
         try {
-            Task task = new Task();
-            task.setIdProject(project.getId());
-            task.setName(jTextFieldTaskName.getText());
-            task.setDescription(jTextAreaTaskDescription.getText());
-            task.setNotes(jTextAreaTaskNotes.getText());
-            task.setIsCompleted(false);
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-            Date deadline = null;
-            deadline = dateFormat.parse(jFormattedTextFieldTaskDeadline.getText());
-                        
-            task.setDeadline(deadline);
-            controller.save(task);
+            if(!jTextFieldTaskName.getText().isEmpty() && 
+                    !jFormattedTextFieldTaskDeadline.getText().isEmpty()){
+                Task task = new Task();
+                task.setIdProject(project.getId());
+                task.setName(jTextFieldTaskName.getText());
+                task.setDescription(jTextAreaTaskDescription.getText());
+                task.setNotes(jTextAreaTaskNotes.getText());
+                task.setIsCompleted(false);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date deadline = null;
+                deadline = dateFormat.parse(jFormattedTextFieldTaskDeadline.getText());
 
-            JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso");
+                task.setDeadline(deadline);
+                controller.save(task);
 
+                JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Há campos obrigatóriios"
+                        + " para preencher, Nome da Tarefa e Prazo");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        this.dispose();
     }//GEN-LAST:event_jLabelToolBarSaveMouseClicked
 
     /**
