@@ -14,7 +14,7 @@ import model.Task;
 
 /**
  *
- * @author jkm
+ * @author Jefferson Klamas Marzani (jkm)
  */
 public class DeadlineColumnCellRederer extends DefaultTableCellRenderer {
     
@@ -36,9 +36,5 @@ public class DeadlineColumnCellRederer extends DefaultTableCellRenderer {
             label.setBackground(Color.RED);
         }
         return label;
-    }
-    
-    
-    
-    
+    } 
 }
