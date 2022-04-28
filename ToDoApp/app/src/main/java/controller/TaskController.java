@@ -108,7 +108,7 @@ public class TaskController {
 
     }
 
-    public void removeById(int taskId) throws SQLException {
+    public void removeById(int taskId) {
         /**
          * Metodo para Deletar tarefas no Banco de Dados.
          */
